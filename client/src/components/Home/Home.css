@@ -1,0 +1,10 @@
+.home-logo{
+width: 200px;
+  max-width: 300px;
+  min-width: 100px;
+  height: auto;
+}
+
+.home-container{
+    margin:50px
+}

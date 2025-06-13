@@ -1,0 +1,6 @@
+@FlashForte_HostAddress = http://localhost:5149
+
+GET {{FlashForte_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
