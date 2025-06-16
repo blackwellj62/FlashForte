@@ -22,6 +22,272 @@ namespace FlashForte.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("FlashForte.Models.Deck", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Decks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "The notes of the Bb Scale",
+                            Name = "Bb Scale",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "The notes of the C Scale",
+                            Name = "C Scale",
+                            UserId = 1
+                        });
+                });
+
+            modelBuilder.Entity("FlashForte.Models.DeckFlashCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DeckId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("FlashCardId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeckFlashCards");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DeckId = 1,
+                            FlashCardId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DeckId = 1,
+                            FlashCardId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DeckId = 1,
+                            FlashCardId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DeckId = 1,
+                            FlashCardId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DeckId = 1,
+                            FlashCardId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DeckId = 1,
+                            FlashCardId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DeckId = 1,
+                            FlashCardId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DeckId = 1,
+                            FlashCardId = 8
+                        });
+                });
+
+            modelBuilder.Entity("FlashForte.Models.FlashCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Question")
+                        .HasColumnType("text");
+
+                    b.Property<int>("TopicId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FlashCards");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Answer = "D",
+                            Question = "What is the 3rd note of the Bb Scale?",
+                            TopicId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Answer = "F",
+                            Question = "What is the 5th note of the Bb Scale?",
+                            TopicId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Answer = "A",
+                            Question = "What is the 7th note of the Bb Scale?",
+                            TopicId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Answer = "Eb",
+                            Question = "What is the 4th note of the Bb Scale?",
+                            TopicId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Answer = "G",
+                            Question = "What is the 6th note of the Bb Scale?",
+                            TopicId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Answer = "C",
+                            Question = "What is the 2nd note of the Bb Scale?",
+                            TopicId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Answer = "Bb",
+                            Question = "What is the 1st note of the Bb Scale?",
+                            TopicId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Answer = "Bb",
+                            Question = "What is the 8th note of the Bb Scale?",
+                            TopicId = 1,
+                            UserId = 1
+                        });
+                });
+
+            modelBuilder.Entity("FlashForte.Models.Topic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Topics");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Scales"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Intervals"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Clefs"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Key Signatures"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Time Signatures"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Rhythms"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Articulations"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Dynamics"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "History"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Other"
+                        });
+                });
+
             modelBuilder.Entity("FlashForte.Models.UserProfile", b =>
                 {
                     b.Property<int>("Id")
@@ -182,13 +448,13 @@ namespace FlashForte.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9d673a04-bc39-4cd7-9a24-fbb03c9a0662",
+                            ConcurrencyStamp = "e1bc8ba5-29a2-40c4-a31d-ea19938957e7",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGhQiAasBIASL7g9i54aUjfCesYDZlyw75dPbRPWVVv26pfOgDyEQIzdNrx6ZZOvhQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOEnBKnj23ph0ASuuknTcm7ym+G1hkj5ewJlK033F9eVi+yA18AVmgzt8dt3+wmO7Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cbf84be8-4527-406a-bcb2-60ad3d55bd67",
+                            SecurityStamp = "ede04e08-7b37-4d44-bec2-a778ed7afc7f",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

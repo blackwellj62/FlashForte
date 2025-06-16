@@ -14,7 +14,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
       <div className="container-fluid">
         <RRNavLink className="navbar-brand d-flex align-items-center" to="/">
           <img src={forteRound} alt="Flash Forte Logo" className="logo me-2" />
-          Flash Forte
+          
         </RRNavLink>
         <button
           className="navbar-toggler"
@@ -33,7 +33,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
-              {loggedInUser.userName}
+              {loggedInUser ? loggedInUser.userName : ""}
             </h5>
             <button
               type="button"
