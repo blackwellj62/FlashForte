@@ -30,9 +30,6 @@ namespace FlashForte.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
-
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
 
@@ -52,7 +49,6 @@ namespace FlashForte.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "101 Main Street",
                             FirstName = "Admina",
                             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             LastName = "Strator"
@@ -186,13 +182,13 @@ namespace FlashForte.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4bce73ea-f62c-4757-a99b-a5a8123184c8",
+                            ConcurrencyStamp = "9d673a04-bc39-4cd7-9a24-fbb03c9a0662",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEKSjKhKyjhQxB3ocgZRB5DzYCuQCxsIrNBkunHCxsOZ2/cCHZ+YnIqnpbedHHuuQjA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGhQiAasBIASL7g9i54aUjfCesYDZlyw75dPbRPWVVv26pfOgDyEQIzdNrx6ZZOvhQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5a822201-24b6-4f40-b8c4-7e942b7ecb40",
+                            SecurityStamp = "cbf84be8-4527-406a-bcb2-60ad3d55bd67",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

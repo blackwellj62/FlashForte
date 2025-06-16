@@ -165,7 +165,6 @@ namespace FlashForte.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     FirstName = table.Column<string>(type: "text", nullable: true),
                     LastName = table.Column<string>(type: "text", nullable: true),
-                    Address = table.Column<string>(type: "text", nullable: true),
                     IdentityUserId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -186,7 +185,7 @@ namespace FlashForte.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "4bce73ea-f62c-4757-a99b-a5a8123184c8", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEKSjKhKyjhQxB3ocgZRB5DzYCuQCxsIrNBkunHCxsOZ2/cCHZ+YnIqnpbedHHuuQjA==", null, false, "5a822201-24b6-4f40-b8c4-7e942b7ecb40", false, "Administrator" });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "9d673a04-bc39-4cd7-9a24-fbb03c9a0662", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEGhQiAasBIASL7g9i54aUjfCesYDZlyw75dPbRPWVVv26pfOgDyEQIzdNrx6ZZOvhQ==", null, false, "cbf84be8-4527-406a-bcb2-60ad3d55bd67", false, "Administrator" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -195,8 +194,8 @@ namespace FlashForte.Migrations
 
             migrationBuilder.InsertData(
                 table: "UserProfiles",
-                columns: new[] { "Id", "Address", "FirstName", "IdentityUserId", "LastName" },
-                values: new object[] { 1, "101 Main Street", "Admina", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "Strator" });
+                columns: new[] { "Id", "FirstName", "IdentityUserId", "LastName" },
+                values: new object[] { 1, "Admina", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "Strator" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

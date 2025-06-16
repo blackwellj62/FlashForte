@@ -33,7 +33,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
-              Menu
+              {loggedInUser.userName}
             </h5>
             <button
               type="button"
