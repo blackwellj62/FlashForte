@@ -4,6 +4,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace FlashForte.Migrations
 {
     /// <inheritdoc />
@@ -49,6 +51,64 @@ namespace FlashForte.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DeckFlashCards",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    DeckId = table.Column<int>(type: "integer", nullable: false),
+                    FlashCardId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeckFlashCards", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Decks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    UserId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Decks", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FlashCards",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Question = table.Column<string>(type: "text", nullable: true),
+                    Answer = table.Column<string>(type: "text", nullable: true),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    TopicId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FlashCards", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Topics",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Topics", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -165,7 +225,6 @@ namespace FlashForte.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     FirstName = table.Column<string>(type: "text", nullable: true),
                     LastName = table.Column<string>(type: "text", nullable: true),
-                    Address = table.Column<string>(type: "text", nullable: true),
                     IdentityUserId = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -186,7 +245,63 @@ namespace FlashForte.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "4bce73ea-f62c-4757-a99b-a5a8123184c8", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEKSjKhKyjhQxB3ocgZRB5DzYCuQCxsIrNBkunHCxsOZ2/cCHZ+YnIqnpbedHHuuQjA==", null, false, "5a822201-24b6-4f40-b8c4-7e942b7ecb40", false, "Administrator" });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "e1bc8ba5-29a2-40c4-a31d-ea19938957e7", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEOEnBKnj23ph0ASuuknTcm7ym+G1hkj5ewJlK033F9eVi+yA18AVmgzt8dt3+wmO7Q==", null, false, "ede04e08-7b37-4d44-bec2-a778ed7afc7f", false, "Administrator" });
+
+            migrationBuilder.InsertData(
+                table: "DeckFlashCards",
+                columns: new[] { "Id", "DeckId", "FlashCardId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 1, 2 },
+                    { 3, 1, 3 },
+                    { 4, 1, 4 },
+                    { 5, 1, 5 },
+                    { 6, 1, 6 },
+                    { 7, 1, 7 },
+                    { 8, 1, 8 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Decks",
+                columns: new[] { "Id", "Description", "Name", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "The notes of the Bb Scale", "Bb Scale", 1 },
+                    { 2, "The notes of the C Scale", "C Scale", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "FlashCards",
+                columns: new[] { "Id", "Answer", "Question", "TopicId", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "D", "What is the 3rd note of the Bb Scale?", 1, 1 },
+                    { 2, "F", "What is the 5th note of the Bb Scale?", 1, 1 },
+                    { 3, "A", "What is the 7th note of the Bb Scale?", 1, 1 },
+                    { 4, "Eb", "What is the 4th note of the Bb Scale?", 1, 1 },
+                    { 5, "G", "What is the 6th note of the Bb Scale?", 1, 1 },
+                    { 6, "C", "What is the 2nd note of the Bb Scale?", 1, 1 },
+                    { 7, "Bb", "What is the 1st note of the Bb Scale?", 1, 1 },
+                    { 8, "Bb", "What is the 8th note of the Bb Scale?", 1, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Topics",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Scales" },
+                    { 2, "Intervals" },
+                    { 3, "Clefs" },
+                    { 4, "Key Signatures" },
+                    { 5, "Time Signatures" },
+                    { 6, "Rhythms" },
+                    { 7, "Articulations" },
+                    { 8, "Dynamics" },
+                    { 9, "History" },
+                    { 10, "Other" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -195,8 +310,8 @@ namespace FlashForte.Migrations
 
             migrationBuilder.InsertData(
                 table: "UserProfiles",
-                columns: new[] { "Id", "Address", "FirstName", "IdentityUserId", "LastName" },
-                values: new object[] { 1, "101 Main Street", "Admina", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "Strator" });
+                columns: new[] { "Id", "FirstName", "IdentityUserId", "LastName" },
+                values: new object[] { 1, "Admina", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "Strator" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -258,6 +373,18 @@ namespace FlashForte.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "DeckFlashCards");
+
+            migrationBuilder.DropTable(
+                name: "Decks");
+
+            migrationBuilder.DropTable(
+                name: "FlashCards");
+
+            migrationBuilder.DropTable(
+                name: "Topics");
 
             migrationBuilder.DropTable(
                 name: "UserProfiles");
