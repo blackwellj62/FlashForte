@@ -31,10 +31,7 @@ a:hover {
   
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+
 
 
 button {
@@ -49,7 +46,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #eaeaec;
 }
 button:focus,
 button:focus-visible {
@@ -63,7 +60,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background:linear-gradient( to right, #503280, #947e1b);
   }
   a:hover {
     color: #747bff;
