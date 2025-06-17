@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { getFlashCards } from "../../managers/cardManager.js"
 import "./FlashCards.css"
+import { useNavigate } from "react-router-dom"
 
 
 export const FlashCards = ({loggedInUser}) => {
     const [allCards, setAllCards] = useState([])
     const [flippedCards, setFlippedCards] = useState({})
     const [userCards, setUserCards] = useState([])
+    const navigate = useNavigate()
 
     
     useEffect(()=>{
@@ -31,6 +33,7 @@ export const FlashCards = ({loggedInUser}) => {
 
 
     return (
+    <div className="page-container">
     <div className="flashcard-container">
       {userCards == "" ? <h1>Looks like you don't have any FlashCards. Try Making some!</h1> : userCards.map((card) => (
         <div key={card.id} className="flip-card">
@@ -61,5 +64,9 @@ export const FlashCards = ({loggedInUser}) => {
         </div>
       ))}
     </div>
+      <div className="new-btn">
+      <button className="btn-log" onClick={()=>{navigate("/new-card")}}>➕New Card</button>
+      </div>
+      </div>
   );
 }

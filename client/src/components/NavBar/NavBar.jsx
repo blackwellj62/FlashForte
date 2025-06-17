@@ -46,12 +46,17 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
                 <RRNavLink to="/" className="nav-link">
-                  Home
+                Home
                 </RRNavLink>
               </li>
               <li className="nav-item">
                 <RRNavLink to="flashcards" className="nav-link">
-                  Flash Cards
+                Flash Cards
+                </RRNavLink>
+              </li>
+               <li className="nav-item">
+                <RRNavLink to="new-card" className="nav-link">
+                New Card
                 </RRNavLink>
               </li>
             </ul>
