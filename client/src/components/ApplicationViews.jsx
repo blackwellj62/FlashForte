@@ -3,6 +3,8 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { Home } from "./Home/Home.jsx";
+import { FlashCards } from "./Cards/FlashCards.jsx";
+
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -17,14 +19,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        {/* <Route
-          path="bikes"
+        <Route
+          path="flashcards"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Bikes />
+              <FlashCards/>
             </AuthorizedRoute>
           }
-        /> */}
+        />
         
         <Route
           path="login"
