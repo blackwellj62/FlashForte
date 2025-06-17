@@ -49,7 +49,11 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                   Home
                 </RRNavLink>
               </li>
-              {/* Add more links as needed */}
+              <li className="nav-item">
+                <RRNavLink to="flashcards" className="nav-link">
+                  Flash Cards
+                </RRNavLink>
+              </li>
             </ul>
 
             {loggedInUser ? (
