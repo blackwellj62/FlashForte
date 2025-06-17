@@ -1,9 +1,16 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .flashcard-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 20px;
   justify-content: center;
+  
 }
 
 .flip-card {
@@ -71,4 +78,25 @@
   margin-bottom:auto;
   padding: 5px;
   
+}
+.btn-log{
+  background-color: #2e2c2c;
+  height:fit-content
+}
+.new-btn{
+   
+    padding: 1rem;
+  display: flex;
+  justify-content: center; 
+}
+
+.form-container{
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background:linear-gradient(rgb(138, 138, 138),rgb(87, 83, 83));
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+}
+.topic-select{
+    width:fit-content
 }

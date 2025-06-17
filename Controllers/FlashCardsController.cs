@@ -22,14 +22,14 @@ public class FlashCardsController : ControllerBase
 
     public IActionResult Get()
     {
-        var FlashCardDTO = _dbContext.FlashCards.Include(fc=>fc.Topic).Include(fc=>fc.User).Select(fc => new FlashCardDTO
+        var FlashCardDTO = _dbContext.FlashCards.Include(fc => fc.Topic).Include(fc => fc.User).Select(fc => new FlashCardDTO
         {
             Id = fc.Id,
             Question = fc.Question,
             Answer = fc.Answer,
             UserId = fc.UserId,
             TopicId = fc.TopicId,
-             Topic = fc.Topic == null ? null : new TopicDTO
+            Topic = fc.Topic == null ? null : new TopicDTO
             {
                 Id = fc.Topic.Id,
                 Name = fc.Topic.Name
@@ -42,5 +42,15 @@ public class FlashCardsController : ControllerBase
             }
         }).ToList();
         return Ok(FlashCardDTO);
+    }
+
+    [HttpPost]
+    [Authorize]
+
+    public IActionResult NewCard(FlashCard flashCard)
+    {
+        _dbContext.FlashCards.Add(flashCard);
+        _dbContext.SaveChanges();
+        return Created($"/api/flashcards/{flashCard.Id}", flashCard);
     }
 }
