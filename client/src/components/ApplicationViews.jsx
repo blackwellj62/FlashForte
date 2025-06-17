@@ -15,7 +15,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <Home/>
+              <Home loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />
@@ -23,7 +23,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="flashcards"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <FlashCards/>
+              <FlashCards loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />
