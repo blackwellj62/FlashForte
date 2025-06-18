@@ -53,4 +53,23 @@ public class FlashCardsController : ControllerBase
         _dbContext.SaveChanges();
         return Created($"/api/flashcards/{flashCard.Id}", flashCard);
     }
+
+    [HttpDelete("{id}")]
+    [Authorize]
+
+    public IActionResult DeleteFlashCard(int id)
+    {
+        var flashcard = _dbContext.FlashCards.SingleOrDefault(f => f.Id == id);
+        if (flashcard == null)
+        {
+            return NotFound();
+        }
+        var relatedDeckFlashCards = _dbContext.DeckFlashCards
+        .Where(df => df.FlashCardId == id);
+        
+        _dbContext.DeckFlashCards.RemoveRange(relatedDeckFlashCards);
+        _dbContext.Remove(flashcard);
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
 }
