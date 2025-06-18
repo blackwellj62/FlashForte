@@ -4,7 +4,7 @@ export const getFlashCards = () => {
     return fetch(apiURL).then((res)=>res.json())
 }
 
-export const newFlashCard = (newCard) => {
+export const createFlashCard = (newCard) => {
     return fetch(apiURL,
         {
             method: "POST",
