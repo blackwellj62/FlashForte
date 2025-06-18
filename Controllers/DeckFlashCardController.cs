@@ -41,4 +41,20 @@ public class DeckFlashCardController : ControllerBase
         }).ToList();
         return Ok(DeckFlashCardDTO);
     }
+
+    [HttpDelete("{id}")]
+    [Authorize]
+
+    public IActionResult DeleteDeckFlashCard(int id)
+    {
+        var deckflashcard = _dbContext.DeckFlashCards.SingleOrDefault(df => df.Id == id);
+        if (deckflashcard == null)
+        {
+            return NotFound();
+        }
+       
+        _dbContext.Remove(deckflashcard);
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
 }

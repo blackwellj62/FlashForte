@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getFlashCards } from "../../managers/cardManager.js"
+import { deleteFlashCard, getFlashCards } from "../../managers/cardManager.js"
 import "./FlashCards.css"
 import { useNavigate } from "react-router-dom"
 
@@ -18,11 +18,16 @@ export const FlashCards = ({loggedInUser}) => {
     },[])
 
     useEffect(()=>{
-        const foundCards = allCards.filter(card=>
+       reFetchCards()
+    },[allCards, loggedInUser])
+
+    const reFetchCards = () => {
+      getFlashCards().then(cardArray=>{
+      const foundCards = cardArray.filter(card=>
             card.userId === loggedInUser.id
         )
-        setUserCards(foundCards)
-    },[allCards, loggedInUser])
+        setUserCards(foundCards)})
+    }
 
     const handleFlip = (cardId) => {
         setFlippedCards((prevState) => ({
@@ -30,6 +35,14 @@ export const FlashCards = ({loggedInUser}) => {
           [cardId]: !prevState[cardId],
         }));
       };
+
+    const handleDelete = async(flashCardId) => {
+      const confirmDelete = window.confirm("Are you sure you want to delete this flashcard?");
+      if (confirmDelete){
+      await deleteFlashCard(flashCardId)
+      reFetchCards()
+      }
+    }
 
 
     return (
@@ -47,7 +60,7 @@ export const FlashCards = ({loggedInUser}) => {
                 </button>
                 <div className="card-buttons">
                     <button className="btn btn-warning">Edit</button>
-                    <button className="btn btn-danger">Delete</button>
+                    <button className="btn btn-danger" onClick={()=>{handleDelete(card.id)}}>Delete</button>
                 </div>
               </div>
             </div>
@@ -55,7 +68,7 @@ export const FlashCards = ({loggedInUser}) => {
               <div className="card-header">{card.topic.name}</div>
               <div className="card-body">
                 <h3 className="card-title">{card.answer}</h3>
-                <button className="btn btn-primary" onClick={() => handleFlip(card.id)}>
+                <button className="btn btn-primary" >
                   Back
                 </button>
               </div>
