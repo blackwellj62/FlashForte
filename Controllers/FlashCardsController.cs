@@ -66,9 +66,47 @@ public class FlashCardsController : ControllerBase
         }
         var relatedDeckFlashCards = _dbContext.DeckFlashCards
         .Where(df => df.FlashCardId == id);
-        
+
         _dbContext.DeckFlashCards.RemoveRange(relatedDeckFlashCards);
         _dbContext.Remove(flashcard);
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
+    [HttpGet("{id}")]
+    [Authorize]
+
+    public IActionResult GetFlashCardById(int id)
+    {
+        FlashCard flashCard = _dbContext.FlashCards.Include(f => f.Topic)
+        .Include(f => f.User).SingleOrDefault(f => f.Id == id);
+
+        if (flashCard == null)
+        {
+            return NotFound();
+        }
+        return Ok(flashCard);
+    }
+
+    [HttpPut("{id}")]
+    [Authorize]
+
+    public IActionResult UpdateFlashCard(FlashCard flashCard, int id)
+    {
+        FlashCard flashCardToUpdate = _dbContext.FlashCards.SingleOrDefault(fc => fc.Id == id);
+        if (flashCardToUpdate == null)
+        {
+            return NotFound();
+        }
+        else if (id != flashCard.Id)
+        {
+            return BadRequest();
+        }
+
+        flashCardToUpdate.Question = flashCard.Question;
+        flashCardToUpdate.Answer = flashCard.Answer;
+        flashCardToUpdate.TopicId = flashCard.TopicId;
+
         _dbContext.SaveChanges();
         return NoContent();
     }

@@ -11,3 +11,7 @@ export const createDeckFlashCard = (newDeckFlashCard) => {
             body: JSON.stringify(newDeckFlashCard)
         }).then((res)=>res.json())
 }
+
+export const getDeckFlashCards = () => {
+    return fetch(apiURL).then((res)=>res.json())
+}

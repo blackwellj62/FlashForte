@@ -59,7 +59,7 @@ export const FlashCards = ({loggedInUser}) => {
                   Flip
                 </button>
                 <div className="card-buttons">
-                    <button className="btn btn-warning">Edit</button>
+                    <button className="btn btn-warning" onClick={()=>{navigate(`/edit-card/${card.id}`)}}>Edit</button>
                     <button className="btn btn-danger" onClick={()=>{handleDelete(card.id)}}>Delete</button>
                 </div>
               </div>

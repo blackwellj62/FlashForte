@@ -22,3 +22,7 @@ export const deleteFlashCard = (flashcardId) => {
             method: "DELETE"
         })
 }
+
+export const getFlashCardById = (flashcardId) => {
+    return fetch(`${apiURL}/${flashcardId}`).then((res)=>res.json())
+}
