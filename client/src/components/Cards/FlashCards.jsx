@@ -68,7 +68,7 @@ export const FlashCards = ({loggedInUser}) => {
               <div className="card-header">{card.topic.name}</div>
               <div className="card-body">
                 <h3 className="card-title">{card.answer}</h3>
-                <button className="btn btn-primary" >
+                <button className="btn btn-primary" onClick={() => handleFlip(card.id)}>
                   Back
                 </button>
               </div>

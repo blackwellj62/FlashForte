@@ -54,7 +54,11 @@ export const EditCard = ({loggedInUser}) => {
         setFilteredDeckFlashCards(foundDeckFC)
     },[allDeckFlashCards, flashCard])
 
-
+    const handleInputChange = (event) => {
+        const statCopy = {...flashCard}
+        statCopy[event.target.name] = event.target.value
+        setFlashCard(statCopy)
+    }
     
     return(
        <div className="form-container">
@@ -64,7 +68,8 @@ export const EditCard = ({loggedInUser}) => {
           Question:
         </label>
         <div className="col-12 col-sm-10">
-          <input type="text" className="form-control" value={flashCard.question ? flashCard.question : ""}/>
+          <input type="text" className="form-control" name="question" 
+          value={flashCard.question ? flashCard.question : ""} onChange={handleInputChange}/>
         </div>
       </div>
       <div className="row mb-3">
@@ -72,12 +77,14 @@ export const EditCard = ({loggedInUser}) => {
           Answer:
         </label>
         <div className="col-12 col-sm-10">
-          <input type="text" className="form-control" value={flashCard.answer ? flashCard.answer : ""} />
+          <input type="text" className="form-control" name="answer"
+          value={flashCard.answer ? flashCard.answer : ""} onChange={handleInputChange} />
         </div>
       </div>
       <div className="row mb-3">
         <div className="col-sm-4 offset-sm-4">
-      <select className="form-select"  aria-label="Default select example" value={flashCard.topicId ? flashCard.topicId : ""}>
+      <select className="form-select" name="topicId" aria-label="Default select example" 
+      value={flashCard.topicId ? flashCard.topicId : ""} onChange={handleInputChange}>
         <option value="0">Choose a Topic</option>
         {topics.map(topic=>
         <option value={topic.id}key={topic.id}>{topic.name}</option>
@@ -91,7 +98,7 @@ export const EditCard = ({loggedInUser}) => {
         <div className="col-sm-10 offset-sm-1">
             {userDecks.map(deck=>
           <div className="form-check" key={deck.id}>
-            <input className="form-check-input" type="checkbox" 
+            <input className="form-check-input"  type="checkbox" 
             checked={filteredDeckFlashCards.some(df => df.deckId === deck.id)}
             onChange={() => {}}
             value={deck.id} />

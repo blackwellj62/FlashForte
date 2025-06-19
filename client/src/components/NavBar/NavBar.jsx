@@ -2,11 +2,19 @@ import { NavLink as RRNavLink, useNavigate } from "react-router-dom";
 import { logout } from "../../managers/authManager";
 import forteRound from "/src/assets/forteRound.png";
 import "./Nav.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { Offcanvas } from "bootstrap"
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
   const navigate = useNavigate();
 
+  const closeOffcanvas = () => {
+    const offcanvasElement = document.getElementById("offcanvasDarkNavbar");
+    const bsOffcanvas = Offcanvas.getInstance(offcanvasElement);
+    if (bsOffcanvas) {
+      bsOffcanvas.hide();
+    }
+  };
  
 
   return (
@@ -45,17 +53,17 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
-                <RRNavLink to="/" className="nav-link">
+                <RRNavLink to="/" className="nav-link" onClick={closeOffcanvas}>
                 Home
                 </RRNavLink>
               </li>
               <li className="nav-item">
-                <RRNavLink to="flashcards" className="nav-link">
+                <RRNavLink to="flashcards" className="nav-link" onClick={closeOffcanvas}> 
                 Flash Cards
                 </RRNavLink>
               </li>
                <li className="nav-item">
-                <RRNavLink to="new-card" className="nav-link">
+                <RRNavLink to="new-card" className="nav-link" onClick={closeOffcanvas}>
                 New Card
                 </RRNavLink>
               </li>
@@ -68,6 +76,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                   e.preventDefault();
                   logout().then(() => {
                     setLoggedInUser(null);
+                    closeOffcanvas()
                     navigate("/");
                   });
                 }}
@@ -75,7 +84,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                 Logout
               </button>
             ) : (
-              <RRNavLink to="/login" className="btn btn-success mt-3">
+              <RRNavLink to="/login" className="btn btn-success mt-3" onClick={closeOffcanvas}>
                 Login
               </RRNavLink>
             )}
