@@ -108,6 +108,6 @@ public class FlashCardsController : ControllerBase
         flashCardToUpdate.TopicId = flashCard.TopicId;
 
         _dbContext.SaveChanges();
-        return NoContent();
+        return Ok(flashCardToUpdate);
     }
 }

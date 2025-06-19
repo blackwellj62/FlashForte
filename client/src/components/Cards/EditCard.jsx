@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getFlashCardById } from "../../managers/cardManager.js";
+import { getFlashCardById, updateFlashCard } from "../../managers/cardManager.js";
 import { getTopics } from "../../managers/topicManager.js";
 import { getDecks } from "../../managers/deckManager.js";
-import { getDeckFlashCards } from "../../managers/deckFlashCardManager.js";
+import { createDeckFlashCard, deleteDeckFlashCard, getDeckFlashCards } from "../../managers/deckFlashCardManager.js";
 
 export const EditCard = ({loggedInUser}) => {
     const [flashCard, setFlashCard] = useState({})
@@ -75,6 +75,36 @@ export const EditCard = ({loggedInUser}) => {
       }
     };
 
+    const handleSaveButton = async(flashCard) => {
+      const clone = structuredClone(flashCard)
+      try{
+        const updatedCard = await updateFlashCard(clone)
+        const flashCardId = updatedCard.id
+        if(!flashCardId){
+        throw new Error("Flashcard ID not returned from server")
+        }
+        const originalDeckIds = filteredDeckFlashCards.map(df => df.deckId);
+        const decksToAdd = addedDecks.filter(id => !originalDeckIds.includes(id));
+        const decksToDelete = originalDeckIds.filter(id => !addedDecks.includes(id));
+        const createPromises = decksToAdd.map(deckId =>
+          createDeckFlashCard({ deckId, flashCardId })
+        );
+        const deletePromises = decksToDelete.map(deckId => {
+        const deckFlashCardToDelete = filteredDeckFlashCards.find(
+          df => df.deckId === deckId
+          );
+          return deleteDeckFlashCard(deckFlashCardToDelete.id);
+        });
+        await Promise.all([...createPromises, ...deletePromises]);
+        alert("Flashcard saved successfully!");
+          navigate("/flashcards");
+        } catch (error) {
+          console.error("Error saving flashcard", error);
+          alert("Something went wrong. Please try again.");
+        }
+    }
+    
+
     
     return(
        <div className="form-container">
@@ -124,7 +154,7 @@ export const EditCard = ({loggedInUser}) => {
           </div>)}
         </div>
       </div>}
-      <button type="submit" className="btn btn-primary" >
+      <button type="submit" className="btn btn-primary" onClick={()=>{handleSaveButton(flashCard)}} >
         Save
       </button>
     </div>

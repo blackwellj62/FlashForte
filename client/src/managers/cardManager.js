@@ -27,3 +27,12 @@ export const getFlashCardById = (flashcardId) => {
     return fetch(`${apiURL}/${flashcardId}`).then((res)=>res.json())
 }
 
+export const updateFlashCard = (flashcard) => {
+    return fetch(`${apiURL}/${flashcard.id}`,{
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(flashcard)
+    }).then((res)=>res.json())
+}
