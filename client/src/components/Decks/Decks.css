@@ -28,7 +28,7 @@
    padding: 5px;
   margin-bottom: 5px;
   font-size: large;
-  word-wrap: break-word; /* ADD: allow wrapping long words */
+  word-wrap: break-word; 
   overflow-wrap: break-word;
   
 }

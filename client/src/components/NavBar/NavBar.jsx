@@ -72,6 +72,11 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                 New Card
                 </RRNavLink>
               </li>
+              <li className="nav-item">
+                <RRNavLink to="new-deck" className="nav-link" onClick={closeOffcanvas}>
+                New Deck
+                </RRNavLink>
+              </li>
             </ul>
 
             {loggedInUser ? (

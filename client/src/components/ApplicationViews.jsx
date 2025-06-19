@@ -7,6 +7,7 @@ import { FlashCards } from "./Cards/FlashCards.jsx";
 import { NewCard } from "./Cards/NewCard.jsx";
 import { EditCard } from "./Cards/EditCard.jsx";
 import { Decks } from "./Decks/Decks.jsx";
+import { NewDeck } from "./Decks/NewDeck.jsx";
 
 
 
@@ -51,6 +52,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <Decks loggedInUser={loggedInUser}/>
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="new-deck"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <NewDeck loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />

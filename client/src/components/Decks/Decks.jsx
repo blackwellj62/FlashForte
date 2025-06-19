@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { getDecks } from "../../managers/deckManager.js"
 import "./Decks.css"
+import { useNavigate } from "react-router-dom"
 
 export const Decks = ({loggedInUser}) => {
     const [allDecks, setAllDecks] = useState([])
     const [userDecks, setUserDecks] = useState([])
+    const navigate = useNavigate()
 
     useEffect(()=>{
         getDecks().then(deckArray=>{
@@ -34,6 +36,11 @@ export const Decks = ({loggedInUser}) => {
                 </div>
             </div>)}
         </div>
+             <div className="new-btn">
+              <button className="btn-log" onClick={()=>{navigate("/new-deck")}}
+              >➕New Deck
+              </button>
+            </div>
         </div>
     )
 }
