@@ -12,6 +12,7 @@ export const EditCard = ({loggedInUser}) => {
     const [userDecks, setUserDecks] = useState([])
     const [allDeckFlashCards, setAllDeckFlashCards] = useState([])
     const [filteredDeckFlashCards, setFilteredDeckFlashCards] = useState([])
+    const [addedDecks, setAddedDecks] = useState([])
     const {cardId} = useParams()
     const navigate = useNavigate()
 
@@ -59,6 +60,21 @@ export const EditCard = ({loggedInUser}) => {
         statCopy[event.target.name] = event.target.value
         setFlashCard(statCopy)
     }
+
+    useEffect(() => {
+      const initialDeckIds = filteredDeckFlashCards.map(df => df.deckId);
+      setAddedDecks(initialDeckIds);
+    }, [filteredDeckFlashCards]); 
+    
+    const handleDeckCheck = (event) => {
+      const deckId = parseInt(event.target.value);
+      if (event.target.checked) {
+        setAddedDecks((prev) => [...prev, deckId]);
+      } else {
+        setAddedDecks((prev) => prev.filter((id) => id !== deckId));
+      }
+    };
+
     
     return(
        <div className="form-container">
@@ -99,8 +115,8 @@ export const EditCard = ({loggedInUser}) => {
             {userDecks.map(deck=>
           <div className="form-check" key={deck.id}>
             <input className="form-check-input"  type="checkbox" 
-            checked={filteredDeckFlashCards.some(df => df.deckId === deck.id)}
-            onChange={() => {}}
+            checked={addedDecks.includes(deck.id)}
+            onChange={handleDeckCheck}
             value={deck.id} />
             <label className="form-check-label" >
               {deck.name}
