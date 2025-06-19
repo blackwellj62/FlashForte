@@ -6,6 +6,7 @@ import { Home } from "./Home/Home.jsx";
 import { FlashCards } from "./Cards/FlashCards.jsx";
 import { NewCard } from "./Cards/NewCard.jsx";
 import { EditCard } from "./Cards/EditCard.jsx";
+import { Decks } from "./Decks/Decks.jsx";
 
 
 
@@ -42,6 +43,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <EditCard loggedInUser={loggedInUser}/>
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="decks"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <Decks loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />

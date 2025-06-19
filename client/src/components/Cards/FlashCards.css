@@ -41,7 +41,7 @@
   backface-visibility: hidden;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: white;
+  background:linear-gradient(rgb(255, 255, 255),rgb(160, 157, 157));
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
@@ -100,7 +100,7 @@
 .form-container{
   border: 1px solid #ccc;
   border-radius: 8px;
-  background:linear-gradient(rgb(138, 138, 138),rgb(87, 83, 83));
+  background:linear-gradient(to right,rgb(121, 121, 121),rgb(201, 198, 198));
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 10px;
 }

@@ -62,6 +62,11 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                 Flash Cards
                 </RRNavLink>
               </li>
+              <li className="nav-item">
+                <RRNavLink to="decks" className="nav-link" onClick={closeOffcanvas}> 
+                Decks
+                </RRNavLink>
+              </li>
                <li className="nav-item">
                 <RRNavLink to="new-card" className="nav-link" onClick={closeOffcanvas}>
                 New Card
