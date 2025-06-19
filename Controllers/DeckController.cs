@@ -28,7 +28,7 @@ public class DecksController : ControllerBase
             Name = d.Name,
             Description = d.Description,
             UserId = d.UserId,
-            
+
         }).ToList();
         return Ok(DeckDTO);
     }
@@ -41,5 +41,24 @@ public class DecksController : ControllerBase
         _dbContext.Decks.Add(deck);
         _dbContext.SaveChanges();
         return Created($"/api/decks/{deck.Id}", deck);
+    }
+    
+    [HttpDelete("{id}")]
+    [Authorize]
+
+    public IActionResult DeleteDeck(int id)
+    {
+        var deck = _dbContext.Decks.SingleOrDefault(d => d.Id == id);
+        if (deck == null)
+        {
+            return NotFound();
+        }
+        var relatedDeckFlashCards = _dbContext.DeckFlashCards
+        .Where(df => df.DeckId == id);
+
+        _dbContext.DeckFlashCards.RemoveRange(relatedDeckFlashCards);
+        _dbContext.Remove(deck);
+        _dbContext.SaveChanges();
+        return NoContent();
     }
 }
