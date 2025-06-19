@@ -2,7 +2,6 @@ import { NavLink as RRNavLink, useNavigate } from "react-router-dom";
 import { logout } from "../../managers/authManager";
 import forteRound from "/src/assets/forteRound.png";
 import "./Nav.css";
-// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Offcanvas } from "bootstrap"
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
