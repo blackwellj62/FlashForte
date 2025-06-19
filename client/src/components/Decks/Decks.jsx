@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getDecks } from "../../managers/deckManager.js"
+import { deleteDeck, getDecks } from "../../managers/deckManager.js"
 import "./Decks.css"
 import { useNavigate } from "react-router-dom"
 
@@ -13,13 +13,26 @@ export const Decks = ({loggedInUser}) => {
             setAllDecks(deckArray)
         })
     },[])
-
+    
     useEffect(()=>{
-            const foundDecks = allDecks.filter(deck=>
+           reFetchDecks()
+        },[allDecks, loggedInUser])
+
+    const reFetchDecks = () => {
+          getDecks().then(deckArray=>{
+          const foundDecks = deckArray.filter(deck=>
                 deck.userId === loggedInUser.id
             )
-            setUserDecks(foundDecks)
-        },[allDecks, loggedInUser])
+            setUserDecks(foundDecks)})
+        }
+
+    const handleDelete = async(deckId) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this deck?");
+      if (confirmDelete){
+        await deleteDeck(deckId)
+        reFetchDecks()
+      }
+    }
 
     return(
         <div className="page-container">
@@ -31,7 +44,7 @@ export const Decks = ({loggedInUser}) => {
                     <p className="card-text">{deck.description}</p>
                     <div className="card-buttons">
                     <button className="btn btn-primary" >View</button>
-                    <button className="btn btn-danger" >Delete</button>
+                    <button className="btn btn-danger" onClick={()=>{handleDelete(deck.id)}}>Delete</button>
                 </div>
                 </div>
             </div>)}
