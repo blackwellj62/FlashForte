@@ -5,6 +5,7 @@ import Register from "./auth/Register";
 import { Home } from "./Home/Home.jsx";
 import { FlashCards } from "./Cards/FlashCards.jsx";
 import { NewCard } from "./Cards/NewCard.jsx";
+import { EditCard } from "./Cards/EditCard.jsx";
 
 
 
@@ -33,6 +34,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <NewCard loggedInUser={loggedInUser}/>
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="edit-card/:cardId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <EditCard loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />
