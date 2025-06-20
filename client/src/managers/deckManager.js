@@ -23,3 +23,7 @@ export const deleteDeck = (deckId) => {
             method: "DELETE"
         })
 }
+
+export const getDeckById = (deckId) => {
+    return fetch(`${apiURL}/${deckId}`).then((res)=>res.json())
+}

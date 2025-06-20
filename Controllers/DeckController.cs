@@ -42,7 +42,7 @@ public class DecksController : ControllerBase
         _dbContext.SaveChanges();
         return Created($"/api/decks/{deck.Id}", deck);
     }
-    
+
     [HttpDelete("{id}")]
     [Authorize]
 
@@ -60,5 +60,19 @@ public class DecksController : ControllerBase
         _dbContext.Remove(deck);
         _dbContext.SaveChanges();
         return NoContent();
+    }
+    
+    [HttpGet("{id}")]
+    [Authorize]
+
+    public IActionResult GetDeckById(int id)
+    {
+        Deck deck = _dbContext.Decks.SingleOrDefault(d => d.Id == id);
+
+        if (deck == null)
+        {
+            return NotFound();
+        }
+        return Ok(deck);
     }
 }
