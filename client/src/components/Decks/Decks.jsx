@@ -43,7 +43,7 @@ export const Decks = ({loggedInUser}) => {
                     <h5 className="card-title">{deck.name}</h5>
                     <p className="card-text">{deck.description}</p>
                     <div className="card-buttons">
-                    <button className="btn btn-primary" >View</button>
+                    <button className="btn btn-primary" onClick={()=>{navigate(`/deck-details/${deck.id}`)}}>View</button>
                     <button className="btn btn-danger" onClick={()=>{handleDelete(deck.id)}}>Delete</button>
                 </div>
                 </div>
