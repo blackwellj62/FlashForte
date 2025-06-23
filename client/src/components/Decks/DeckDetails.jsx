@@ -91,7 +91,7 @@ export const DeckDetails = ({loggedInUser}) => {
               <button className="btn-log" onClick={()=>{navigate(`/edit-deck/${deck.id}`)}}>Edit Deck</button>
         </div>
         <div className="new-btn">
-              <button className="btn-log">Quiz Mode</button>
+              <button className="btn-log" onClick={()=>{navigate(`/quiz/${deck.id}`)}}>Quiz Mode</button>
         </div>
         </div>
         </div>

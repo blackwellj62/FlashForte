@@ -18,6 +18,7 @@
   width: 300px;
   height: 200px;
   perspective: 1000px;
+  overflow: hidden;
 }
 
 .flip-card-inner {
@@ -27,6 +28,7 @@
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
+  
 }
 
 .flip-card-inner.flipped {
@@ -60,7 +62,7 @@
 .card-body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   overflow: auto;
 }
 
