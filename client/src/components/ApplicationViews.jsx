@@ -10,6 +10,7 @@ import { Decks } from "./Decks/Decks.jsx";
 import { NewDeck } from "./Decks/NewDeck.jsx";
 import { DeckDetails } from "./Decks/DeckDetails.jsx";
 import { EditDeck } from "./Decks/EditDeck.jsx";
+import { QuizMode } from "./Quiz/QuizMode.jsx";
 
 
 
@@ -78,6 +79,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <EditDeck loggedInUser={loggedInUser}/>
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="quiz/:deckId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <QuizMode loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />
