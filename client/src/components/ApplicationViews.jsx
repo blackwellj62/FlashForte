@@ -9,6 +9,7 @@ import { EditCard } from "./Cards/EditCard.jsx";
 import { Decks } from "./Decks/Decks.jsx";
 import { NewDeck } from "./Decks/NewDeck.jsx";
 import { DeckDetails } from "./Decks/DeckDetails.jsx";
+import { EditDeck } from "./Decks/EditDeck.jsx";
 
 
 
@@ -72,7 +73,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        
+        <Route
+          path="edit-deck/:deckId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <EditDeck loggedInUser={loggedInUser}/>
+            </AuthorizedRoute>
+          }
+        />
         <Route
           path="login"
           element={<Login setLoggedInUser={setLoggedInUser} />}

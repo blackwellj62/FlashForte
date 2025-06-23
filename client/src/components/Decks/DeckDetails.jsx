@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getDeckById } from "../../managers/deckManager.js"
 import "./Decks.css"
 import { getFlashCards } from "../../managers/cardManager.js"
@@ -12,6 +12,7 @@ export const DeckDetails = ({loggedInUser}) => {
     const [cardsInDeck, setCardsInDeck] = useState([])
     const [flippedCards, setFlippedCards] = useState({})
     const {deckId} = useParams()
+    const navigate = useNavigate()
 
 
     useEffect(()=>{
@@ -87,7 +88,7 @@ export const DeckDetails = ({loggedInUser}) => {
             ))}
             </div>
             <div className="new-btn">
-              <button className="btn-log">Edit Deck</button>
+              <button className="btn-log" onClick={()=>{navigate(`/edit-deck/${deck.id}`)}}>Edit Deck</button>
         </div>
         <div className="new-btn">
               <button className="btn-log">Quiz Mode</button>
