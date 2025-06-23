@@ -61,6 +61,8 @@ button:focus-visible {
   :root {
     color: #213547;
     background:linear-gradient( to right, #503280, #947e1b);
+      background-size: 100% 200%;
+
   }
   a:hover {
     color: #747bff;

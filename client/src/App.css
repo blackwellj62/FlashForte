@@ -2,11 +2,13 @@
   max-width: 1620px;
   min-height: 100vh;
   margin: auto;
-  padding: 4rem;
+  padding: 8rem;
   padding-top: 6rem; /* 96px */
   text-align: center;
   background: linear-gradient(to right, #503280, #947e1b);
   color: rgba(19, 20, 20, 0.904);
+    background-size: 100% 200%;
+
 }
 
 @media (max-width: 768px) {

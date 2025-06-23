@@ -27,3 +27,13 @@ export const deleteDeck = (deckId) => {
 export const getDeckById = (deckId) => {
     return fetch(`${apiURL}/${deckId}`).then((res)=>res.json())
 }
+
+export const updateDeck = (deck) => {
+    return fetch(`${apiURL}/${deck.id}`,{
+        method: "PUT",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(deck)
+    }).then((res)=>res.json())
+}

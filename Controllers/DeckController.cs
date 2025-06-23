@@ -61,7 +61,7 @@ public class DecksController : ControllerBase
         _dbContext.SaveChanges();
         return NoContent();
     }
-    
+
     [HttpGet("{id}")]
     [Authorize]
 
@@ -74,5 +74,27 @@ public class DecksController : ControllerBase
             return NotFound();
         }
         return Ok(deck);
+    }
+
+    [HttpPut("{id}")]
+    [Authorize]
+
+    public IActionResult UpdateDeck(Deck deck, int id)
+    {
+        Deck deckToUpdate = _dbContext.Decks.SingleOrDefault(d => d.Id == id);
+        if (deckToUpdate == null)
+        {
+            return NotFound();
+        }
+        else if (id != deck.Id)
+        {
+            return BadRequest();
+        }
+
+        deckToUpdate.Name = deck.Name;
+        deckToUpdate.Description = deck.Description;
+
+         _dbContext.SaveChanges();
+        return Ok(deckToUpdate);
     }
 }
