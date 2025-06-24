@@ -24,7 +24,8 @@ FlashForte is a web application designed to help users create and study music th
 * cd client
 * npm install
 * npm run dev
-The frontend should now be running on http://localhost:5173 and the API on https://localhost:5001.
+
+### The frontend should now be running on http://localhost:5173 and the API on https://localhost:5001.
 
 ## License
 
