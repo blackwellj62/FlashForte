@@ -50,11 +50,11 @@ export default function Login({ setLoggedInUser }) {
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
 
-      <Button color="primary" onClick={handleSubmit}>
+      <Button className="btn-log" onClick={handleSubmit}>
         Login
       </Button>
       <p>
-        Not signed up? Register <Link to="/register">here</Link>
+        Not signed up? Register <Link className="a" to="/register">here</Link>
       </p>
     </div>
   );

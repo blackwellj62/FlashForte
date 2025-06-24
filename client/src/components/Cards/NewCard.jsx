@@ -119,7 +119,7 @@ const handleSaveButton = async ()=> {
           </div>)}
         </div>
       </div>}
-      <button type="submit" className="btn btn-primary" onClick={()=>{handleSaveButton()}}>
+      <button type="submit" className="btn-flip" onClick={()=>{handleSaveButton()}}>
         Save
       </button>
     </div>

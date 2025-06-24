@@ -26,9 +26,10 @@
   display: flex;
   justify-content: center;
   align-items:center;
-  min-height: 100vh;
+  min-height:fit-content;
   padding: 2rem;
-  background: linear-gradient(rgb(41, 41, 41), rgb(148, 148, 148));
+  background: linear-gradient(rgb(41, 41, 41) 25%, rgb(148, 148, 148) 41%, rgb(148, 148, 148) 62%);
+  background-blend-mode: overlay;
   border-radius: 10px;
     background-size: 100% 200%;
 
@@ -81,10 +82,11 @@
 .form-container{
   border: 1px solid #ccc;
   border-radius: 8px;
-  background:linear-gradient(to right,rgb(121, 121, 121),rgb(201, 198, 198));
+  background:linear-gradient(to right,rgb(121, 121, 121)25%,rgb(201, 198, 198)50%,rgb(201, 198, 198)100%);
+  background-blend-mode:overlay;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 20px;
-    background-size: 100% 200%;
+  background-size: 100% 200%;
 
 }
 

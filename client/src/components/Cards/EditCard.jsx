@@ -154,7 +154,7 @@ export const EditCard = ({loggedInUser}) => {
           </div>)}
         </div>
       </div>}
-      <button type="submit" className="btn btn-primary" onClick={()=>{handleSaveButton(flashCard)}} >
+      <button type="submit" className="btn-flip" onClick={()=>{handleSaveButton(flashCard)}} >
         Save
       </button>
     </div>

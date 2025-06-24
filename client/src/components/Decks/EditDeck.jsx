@@ -107,17 +107,17 @@ useEffect(()=>{
                     <div className="card-header">{card.topic.name}</div>
                     <div className="card-body">
                         <h3 className="card-title">{card.question}</h3>
-                        <button className="btn btn-primary" onClick={() => handleFlip(card.id)}>
+                        <button className="btn-flip" onClick={() => handleFlip(card.id)}>
                         Flip
                         </button>
-                        <button onClick={()=>{handleRemoveButton(card)}}>Remove from Deck</button>
+                        <button className="btn btn-danger" onClick={()=>{handleRemoveButton(card)}}>Remove from Deck</button>
                     </div>
                     </div>
                     <div className="flip-card-back">
                     <div className="card-header">{card.topic.name}</div>
                     <div className="card-body">
                         <h3 className="card-title">{card.answer}</h3>
-                        <button className="btn btn-primary" onClick={() => handleFlip(card.id)}>
+                        <button className="btn-flip" onClick={() => handleFlip(card.id)}>
                         Back
                         </button>
                     </div>

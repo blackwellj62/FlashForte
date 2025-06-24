@@ -35,6 +35,7 @@ export const Decks = ({loggedInUser}) => {
     }
 
     return(
+        <div className="details-container">
         <div className="page-container">
         <div className="deck-container">
             {userDecks.map(deck=>
@@ -43,7 +44,7 @@ export const Decks = ({loggedInUser}) => {
                     <h5 className="card-title">{deck.name}</h5>
                     <p className="card-text">{deck.description}</p>
                     <div className="card-buttons">
-                    <button className="btn btn-primary" onClick={()=>{navigate(`/deck-details/${deck.id}`)}}>View</button>
+                    <button className="btn-flip" onClick={()=>{navigate(`/deck-details/${deck.id}`)}}>View</button>
                     <button className="btn btn-danger" onClick={()=>{handleDelete(deck.id)}}>Delete</button>
                 </div>
                 </div>
@@ -54,6 +55,7 @@ export const Decks = ({loggedInUser}) => {
               >➕New Deck
               </button>
             </div>
+        </div>
         </div>
     )
 }

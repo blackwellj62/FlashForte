@@ -46,6 +46,7 @@ export const FlashCards = ({loggedInUser}) => {
 
 
     return (
+      <div className="details-container">
     <div className="page-container">
     <div className="flashcard-container">
       {userCards == "" ? <h1>Looks like you don't have any FlashCards. Try Making some!</h1> : userCards.map((card) => (
@@ -55,7 +56,7 @@ export const FlashCards = ({loggedInUser}) => {
               <div className="card-header">{card.topic.name}</div>
               <div className="card-body">
                 <h3 className="card-title">{card.question}</h3>
-                <button className="btn btn-primary" onClick={() => handleFlip(card.id)}>
+                <button className="btn-flip" onClick={() => handleFlip(card.id)}>
                   Flip
                 </button>
                 <div className="card-buttons">
@@ -68,7 +69,7 @@ export const FlashCards = ({loggedInUser}) => {
               <div className="card-header">{card.topic.name}</div>
               <div className="card-body">
                 <h3 className="card-title">{card.answer}</h3>
-                <button className="btn btn-primary" onClick={() => handleFlip(card.id)}>
+                <button className="btn-flip" onClick={() => handleFlip(card.id)}>
                   Back
                 </button>
               </div>
@@ -79,6 +80,7 @@ export const FlashCards = ({loggedInUser}) => {
     </div>
       <div className="new-btn">
       <button className="btn-log" onClick={()=>{navigate("/new-card")}}>➕New Card</button>
+      </div>
       </div>
       </div>
   );

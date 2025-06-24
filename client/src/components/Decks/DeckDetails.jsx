@@ -69,7 +69,7 @@ export const DeckDetails = ({loggedInUser}) => {
                     <div className="card-header">{card.topic.name}</div>
                     <div className="card-body">
                         <h3 className="card-title">{card.question}</h3>
-                        <button className="btn btn-primary" onClick={() => handleFlip(card.id)}>
+                        <button className="btn-flip" onClick={() => handleFlip(card.id)}>
                         Flip
                         </button>
                     </div>
@@ -78,7 +78,7 @@ export const DeckDetails = ({loggedInUser}) => {
                     <div className="card-header">{card.topic.name}</div>
                     <div className="card-body">
                         <h3 className="card-title">{card.answer}</h3>
-                        <button className="btn btn-primary" onClick={() => handleFlip(card.id)}>
+                        <button className="btn-flip" onClick={() => handleFlip(card.id)}>
                         Back
                         </button>
                     </div>

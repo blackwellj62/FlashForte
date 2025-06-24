@@ -112,14 +112,14 @@ export default function Register({ setLoggedInUser }) {
         Registration Failure
       </p>
       <Button
-        color="primary"
+        className="btn-log"
         onClick={handleSubmit}
         disabled={passwordMismatch}
       >
         Register
       </Button>
       <p>
-        Already signed up? Log in <Link to="/login">here</Link>
+        Already signed up? Log in <Link className="a" to="/login">here</Link>
       </p>
     </div>
   );

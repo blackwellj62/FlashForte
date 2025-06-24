@@ -5,7 +5,8 @@
   padding: 8rem;
   padding-top: 6rem; /* 96px */
   text-align: center;
-  background: linear-gradient(to right, #503280, #947e1b);
+  background: linear-gradient(to right, rebeccapurple 10%, darkgoldenrod 50%, rebeccapurple 100%);
+  background-blend-mode: overlay;
   color: rgba(19, 20, 20, 0.904);
     background-size: 100% 200%;
 

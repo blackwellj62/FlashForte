@@ -106,7 +106,7 @@ export const QuizMode = ({ loggedInUser }) => {
         <div className="card-footer">
           <div className="new-btn">
             <button
-              className="btn-log"
+              className="btn-flip"
               onClick={() => {
                 handleFlip(currentCard.id);
               }}
