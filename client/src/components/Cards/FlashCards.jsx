@@ -49,7 +49,7 @@ export const FlashCards = ({loggedInUser}) => {
       <div className="details-container">
     <div className="page-container">
     <div className="flashcard-container">
-      {userCards == "" ? <h1>Looks like you don't have any FlashCards. Try Making some!</h1> : userCards.map((card) => (
+      {userCards == "" ? <h1 className="no-cards">Looks like you don't have any FlashCards. Try Making some!</h1> : userCards.map((card) => (
         <div key={card.id} className="flip-card">
           <div className={`flip-card-inner ${flippedCards[card.id] ? "flipped" : ""}`}>
             <div className="flip-card-front">

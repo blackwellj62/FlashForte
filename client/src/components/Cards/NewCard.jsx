@@ -78,12 +78,13 @@ const handleSaveButton = async ()=> {
   return (
     <div className="form-container">
         <h1>New Flash Card</h1>
+        <form onSubmit={handleSaveButton}>
       <div className="row mb-3">
         <label className="col-12 col-sm-2 col-form-label">
           Question:
         </label>
         <div className="col-12 col-sm-10">
-          <input type="text" className="form-control"onChange={(event)=>{setQuestion(event.target.value)}}/>
+          <input type="text" className="form-control"onChange={(event)=>{setQuestion(event.target.value)}} required/>
         </div>
       </div>
       <div className="row mb-3">
@@ -91,12 +92,12 @@ const handleSaveButton = async ()=> {
           Answer:
         </label>
         <div className="col-12 col-sm-10">
-          <input type="text" className="form-control" onChange={(event)=>{setAnswer(event.target.value)}}/>
+          <input type="text" className="form-control" onChange={(event)=>{setAnswer(event.target.value)}} required/>
         </div>
       </div>
       <div className="row mb-3">
         <div className="col-sm-4 offset-sm-4">
-      <select className="form-select"  aria-label="Default select example" onChange={(event)=>{setChosenTopic(event.target.value)}}>
+      <select className="form-select"  aria-label="Default select example" onChange={(event)=>{setChosenTopic(event.target.value)}} required>
         <option value="0">Choose a Topic</option>
         {allTopics.map(topic=>
         <option value={topic.id}key={topic.id}>{topic.name}</option>
@@ -119,9 +120,10 @@ const handleSaveButton = async ()=> {
           </div>)}
         </div>
       </div>}
-      <button type="submit" className="btn-flip" onClick={()=>{handleSaveButton()}}>
+      <button type="submit" className="btn-flip">
         Save
       </button>
+      </form>
     </div>
   );
 };

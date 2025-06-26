@@ -21,12 +21,13 @@ export const NewDeck = ({loggedInUser}) => {
     return(
         <div className="form-container">
         <h1>New Deck</h1>
+        <form onSubmit={handleSaveButton}>
       <div className="row mb-3">
         <label className="col-12 col-sm-2 col-form-label">
           Deck Name:
         </label>
         <div className="col-12 col-sm-10">
-          <input type="text" className="form-control" onChange={(event)=>{setDeckName(event.target.value)}}/>
+          <input type="text" className="form-control" onChange={(event)=>{setDeckName(event.target.value)}} required/>
         </div>
       </div>
       <div className="row mb-3">
@@ -34,13 +35,14 @@ export const NewDeck = ({loggedInUser}) => {
           Description:
         </label>
         <div className="col-12 col-sm-10">
-          <input type="text" className="form-control" onChange={(event)=>{setDescription(event.target.value)}}/>
+          <input type="text" className="form-control" onChange={(event)=>{setDescription(event.target.value)}} required/>
         </div>
       </div>
       
-      <button type="submit" className="btn-flip" onClick={()=>{handleSaveButton()}}>
+      <button type="submit" className="btn-flip">
         Save
       </button>
+      </form>
     </div>
     )
 }

@@ -11,6 +11,7 @@
   margin-top: 20px;
   justify-content: center;
   
+  
 }
 
 .flip-card {
@@ -128,4 +129,8 @@
   background-color:#2e2c2c;
   color:white;
   border-color: #2e2c2c;
+}
+
+.no-cards{
+  color:white 
 }
