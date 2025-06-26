@@ -43,7 +43,8 @@ export const NewCard = ({loggedInUser}) => {
   }
 };
 
-const handleSaveButton = async ()=> {
+const handleSaveButton = async (event)=> {
+  event.preventDefault()
   const newFlashCard = 
   {
     question : question,
@@ -72,7 +73,7 @@ const handleSaveButton = async ()=> {
     console.error("error saving flashcard", error)
     alert("Something went wrong please try again.")
   }
-  navigate("/flashcards")
+  (navigate("/flashcards"))
 }
 
   return (
