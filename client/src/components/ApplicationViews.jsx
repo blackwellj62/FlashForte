@@ -11,6 +11,7 @@ import { NewDeck } from "./Decks/NewDeck.jsx";
 import { DeckDetails } from "./Decks/DeckDetails.jsx";
 import { EditDeck } from "./Decks/EditDeck.jsx";
 import { QuizMode } from "./Quiz/QuizMode.jsx";
+import { UserProfile } from "./UserProfile.jsx";
 
 
 
@@ -87,6 +88,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <QuizMode loggedInUser={loggedInUser}/>
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <UserProfile loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />
