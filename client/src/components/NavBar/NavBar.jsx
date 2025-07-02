@@ -57,13 +57,13 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
                 </RRNavLink>
               </li>
               <li className="nav-item">
-                <RRNavLink to="flashcards" className="nav-link" onClick={closeOffcanvas}> 
-                Flash Cards
+                <RRNavLink to="decks" className="nav-link" onClick={closeOffcanvas}> 
+                Decks
                 </RRNavLink>
               </li>
               <li className="nav-item">
-                <RRNavLink to="decks" className="nav-link" onClick={closeOffcanvas}> 
-                Decks
+                <RRNavLink to="flashcards" className="nav-link" onClick={closeOffcanvas}> 
+                Flash Cards
                 </RRNavLink>
               </li>
                <li className="nav-item">
