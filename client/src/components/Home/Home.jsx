@@ -9,7 +9,6 @@ export const Home = () => {
             <img src={forteRound} alt="Flash Forte Logo" className="home-logo"/>
             <h1 className="h1">Flash Forte</h1>
             <div className="quote-container">
-                <h3>Quotes will go here</h3>
             </div>
         </div>
     )

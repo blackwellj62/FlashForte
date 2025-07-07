@@ -1,4 +1,4 @@
-import { NavLink as RRNavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink as RRNavLink, useNavigate } from "react-router-dom";
 import { logout } from "../../managers/authManager";
 import forteRound from "/src/assets/forteRound.png";
 import "./Nav.css";
@@ -40,7 +40,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
-              {loggedInUser ? loggedInUser.userName : ""}
+              <Link to="/profile" className="userLink" onClick={closeOffcanvas}>{loggedInUser ? loggedInUser.userName : ""}</Link>
             </h5>
             <button
               type="button"
