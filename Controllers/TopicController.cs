@@ -30,4 +30,19 @@ public class TopicController : ControllerBase
         return Ok(TopicDTO);
     }
 
+    [HttpDelete("{id}")]
+    [Authorize]
+
+    public IActionResult DeleteTopic(int id)
+    {
+        var topic = _dbContext.Topics.SingleOrDefault(t => t.Id == id);
+        if (topic == null)
+        {
+            return NotFound();
+        }
+        
+        _dbContext.Remove(topic);
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
 }
